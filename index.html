@@ -181,7 +181,7 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column">
-        <h2 class="title is-2">Overall</h2>
+        <h2 class="title is-3">Overall</h2>
           <div class="content has-text-justified">
           <img src="./static/images/Overall.png"
                 class="interpolation-image"
@@ -198,11 +198,18 @@
 
     <!-- Paper video. -->
     <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <!-- <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe> -->
+      <div class="column">
+        <h2 class="title is-3">CORE-ReID</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/CORE-ReID.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+            <p>Overview of our CORE-ReID framework. BMFN denotes Bi-directional mean feature Normalization. 
+              We combined local features and global features using Ensemble Fusion.
+                The ECAB in Ensemble Fusion promotes to enhance the features.
+                By using BMFN, the framework can merge the feature from original image x_(T,i) and its paired flipped image x_(T,i)^', 
+                then produce fusion feature  φ_l,l∈{top,bot}. The student network is optimized using pseudo labels in a supervised manner, 
+              while the teacher network is updated by computing the temporal average of the student networks via the update momentum.</p>
         </div>
       </div>
     </div>
