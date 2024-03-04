@@ -291,16 +291,17 @@
             The framework utilizes CycleGAN to generate diverse data that harmonizes differences 
             in im-age characteristics from different camera sources.
              Based on a pair of teacher-student networks, the framework integrates multi-view features for
-              multi-level clustering to derive diverse pseu-do-labels. 
-              A learnable Ensemble Fusion (EF) that focuses on fine-grained local information within global features 
-              is introduced to enhance learning comprehensiveness and avoid ambiguity asso-ciated with multiple pseudo-labels.
-               Experimental results on two common UDA in person ReID demonstrate significant performance gains over state-of-the-art approaches. Additional en-hancements, such as Random Color Dropout to mitigate deviation effects and adaptive fusion of global and local features using the Resnet101 model, 
+              multi-level clustering to derive diverse pseudo-labels. 
+              A learnable Ensemble Fusion component that focuses on fine-grained local information within global features 
+              is introduced to enhance learning comprehensiveness and avoid ambiguity associated with multiple pseudo-labels.
+               Experimental results on three common UDA in person ReID demonstrate significant performance gains over state-of-the-art approaches. 
+            Additional enhancements, such as Enhanced Channel Attention Block and Bi-directional Mean Feature Normalization mitigate deviation effects and adaptive fusion of global and local features using the Resnet-based model, 
             further contribute to the robustness of the framework. 
           </p>
           <p>
             The proposed framework ensures clarity in fusion features, avoids ambiguity,
              and achieves high accuracy in terms of Mean Average Precision, Top-1, Top-5, and Top-10, 
-             positioning it as an ad-vanced and effective solution for UDA in person ReID.
+             positioning it as an advanced and effective solution for UDA in person ReID.
              Our codes and models are available at <a>https://github.com/TrinhQuocNguyen/CORE-ReID</a>.
           </p>
         </div>
