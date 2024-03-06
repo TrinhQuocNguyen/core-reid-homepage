@@ -191,12 +191,12 @@
           </p>
           <p>
             The framework utilizes CycleGAN to generate diverse data that harmonizes differences 
-            in im-age characteristics from different camera sources.
+            in image characteristics from different camera sources.
              Based on a pair of teacher-student networks, the framework integrates multi-view features for
               multi-level clustering to derive diverse pseu-do-labels. 
               A learnable Ensemble Fusion (EF) that focuses on fine-grained local information within global features 
               is introduced to enhance learning comprehensiveness and avoid ambiguity asso-ciated with multiple pseudo-labels.
-               Experimental results on two common UDA in person ReID demonstrate significant performance gains over state-of-the-art approaches. Additional en-hancements, such as Random Color Dropout to mitigate deviation effects and adaptive fusion of global and local features using the Resnet101 model, 
+               Experimental results on two common UDA in person ReID demonstrate significant performance gains over state-of-the-art approaches. Additional enhancements, such as Random Color Dropout to mitigate deviation effects and adaptive fusion of global and local features using the Resnet101 model, 
             further contribute to the robustness of the framework. 
           </p>
           <p>
@@ -245,7 +245,7 @@
             Initially, we combine both the training set (depicted in green boxes) and the test set (represented by dark green boxes)
              within the source dataset, forming the total training set con-sisting of real images. 
              This combined set is then employed to train the camera-aware style trans-fer model. 
-             For each real image, the trained transfer model is applied to generate images (indi-cated by blue boxes 
+             For each real image, the trained transfer model is applied to generate images (indicated by blue boxes 
              for the training set and dark blue boxes for the test set) that align with the stylistic characteristics of the target cameras. 
              Subsequently, the real images (green and dark green boxes) and the style-transferred images (blue and dark blue boxes) 
              are amalgamated to produce the final training set within the source domain.</p>
