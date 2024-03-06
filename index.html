@@ -165,28 +165,65 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <!-- <source src="./static/videos/teaser.mp4"
-                type="video/mp4"> -->
-      </video>
-      <h2 class="subtitle has-text-centered">
+      <!-- <video id="teaser" autoplay muted loop playsinline height="100%">
+        <source src="./static/videos/teaser.mp4"
+                type="video/mp4">
+      </video> -->
+      <!-- <h2 class="subtitle has-text-centered">
         <span class="dnerf">CORE-ReID</span> is a framwork for Unsupervised Domain Adaption for person re-identification.
-      </h2>
+      </h2> -->
     </div>
   </div>
 </section>
 
+<hr>
 <section class="section">
   <div class="container is-max-desktop">
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This study introduces a novel framework, <b>"Comprehensive Optimization and Refinement through 
+            Ensemble Fusion in Domain Adaptation for Person Re-identification (CORE-ReID)"</b>,
+             to address Unsupervised Domain Adaptation (UDA) for person Re-identification (ReID).
+          </p>
+          <p>
+            The framework utilizes CycleGAN to generate diverse data that harmonizes differences 
+            in im-age characteristics from different camera sources.
+             Based on a pair of teacher-student networks, the framework integrates multi-view features for
+              multi-level clustering to derive diverse pseu-do-labels. 
+              A learnable Ensemble Fusion (EF) that focuses on fine-grained local information within global features 
+              is introduced to enhance learning comprehensiveness and avoid ambiguity asso-ciated with multiple pseudo-labels.
+               Experimental results on two common UDA in person ReID demonstrate significant performance gains over state-of-the-art approaches. Additional en-hancements, such as Random Color Dropout to mitigate deviation effects and adaptive fusion of global and local features using the Resnet101 model, 
+            further contribute to the robustness of the framework. 
+          </p>
+          <p>
+            The proposed framework ensures clarity in fusion features, avoids ambiguity,
+             and achieves high accuracy in terms of Mean Average Precision, Top-1, Top-5, and Top-10, 
+             positioning it as an ad-vanced and effective solution for UDA in person ReID.
+             Our codes and models are available at <a>https://github.com/TrinhQuocNguyen/CORE-ReID</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+<hr>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Paper Section-->
+    <div class="columns is-centered has-text-centered">
       <div class="column">
         <h2 class="title is-3">Overall</h2>
           <div class="content has-text-justified">
-          <img src="./static/images/Overall.png"
+          <img src="./static/images/Figure1.png"
                 class="interpolation-image"
                 alt="Interpolate start reference image."/>
-          <p>Two stages in our process adopting the clustering-based approach. 
+          <p><b>Figure 1.</b> Two stages in our process adopting the clustering-based approach. 
             Primarily, we train the model on a customized source domain dataset, and subsequently, 
             the parameters of this pre-trained model are transferred to both the student and teacher networks as an initiali-zation 
             step for the next stage. During fine-tuning, we train the student model and then update the teacher model using momentum updates. 
@@ -194,17 +231,97 @@
         </div>
       </div>
     </div>
-    <!--/ Abstract. -->
+    <!--/ Paper Section-->
 
-    <!-- Paper video. -->
+    <!-- Paper Small Section-->
     <div class="columns is-centered has-text-centered">
       <div class="column">
-        <h2 class="title is-3">CORE-ReID</h2>
-        <div class="content has-text-justified">
-          <img src="./static/images/CORE-ReID.png"
+        <h2 class="title is-4">Generate Training Data on Source Domain Using CycleGAN</h2>
+          <div class="content has-text-justified">
+          <img src="./static/images/Figure2.png"
                 class="interpolation-image"
                 alt="Interpolate start reference image."/>
-            <p>Overview of our CORE-ReID framework. BMFN denotes Bi-directional mean feature Normalization. 
+          <p><b>Figure 2.</b> Our method follows a specific pipeline to create the comprehensive training set for the source domain. 
+            Initially, we combine both the training set (depicted in green boxes) and the test set (represented by dark green boxes)
+             within the source dataset, forming the total training set con-sisting of real images. 
+             This combined set is then employed to train the camera-aware style trans-fer model. 
+             For each real image, the trained transfer model is applied to generate images (indi-cated by blue boxes 
+             for the training set and dark blue boxes for the test set) that align with the stylistic characteristics of the target cameras. 
+             Subsequently, the real images (green and dark green boxes) and the style-transferred images (blue and dark blue boxes) 
+             are amalgamated to produce the final training set within the source domain.</p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Small Section-->
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title is-4">Generated Images from CycleGAN</h2>
+        </div>
+
+        <div class="columns is-centered">
+
+          <!-- Figure3-a -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(a) Sample in training set</h2>
+             
+              <img src="./static/images/Figure3-a.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ Figure3-a -->
+    
+          <!-- Figure3-b -->
+          <div class="column">
+            <h2 class="title is-5">(b) Sample in validation set</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure3-b.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ Figure3-b -->
+        </div>
+        <p>
+          <b>Figure 3.</b> Illustrated are instances of style-transferred samples in DukeMTMC-ReID [37]. 
+          Each image, initially taken by a specific camera, undergoes a transformation to align with the styles of the other 7 cameras,
+           both within the training and test sets. Real images are positioned on the left, 
+           while their corresponding style-transferred counterparts are showcased on the right.
+           Subsec-tions (a) and (b) respectively present examples from the training set and the test set.
+        </p>
+      </div>
+    </section>
+
+    <!-- Paper Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">Source Pretraining</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/Figure4.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+            <p><b>Figure 4.</b> The overall training process in the fully supervised pre-training stage.
+               We employ ResNet101 as the backbone in our training process. </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Section. -->
+
+    <!-- Paper Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">CORE-ReID</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/Figure5.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+            <p><b>Figure 5.</b> Overview of our CORE-ReID framework. BMFN denotes Bi-directional mean feature Normalization. 
               We combined local features and global features using Ensemble Fusion.
                 The ECAB in Ensemble Fusion promotes to enhance the features.
                 By using BMFN, the framework can merge the feature from original image x_(T,i) and its paired flipped image x_(T,i)^', 
@@ -213,7 +330,223 @@
         </div>
       </div>
     </div>
-    <!--/ Paper video. -->
+    <!--/ Paper Section. -->
+
+    <!-- Paper Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">Ensemble Fusion</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/Figure6.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+            <p><b>Figure 6.</b> The Ensemble Fusion component. ς_top  and ς_bot   features are passed through a component namely Enhanced Channel Attention Block (ECAB)
+               to produce the channel attention maps by exploiting the inter-channel relationship of features which helps to enhance the features. </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Section. -->
+
+    <!-- Paper Section -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-4">Enhance Channel Attention Blockn</h2>
+        <div class="content has-text-justified">
+          <img src="./static/images/Figure7.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+            <p><b>Figure 7.</b> The structure of Enhance Channel Attention Block. The Shared Multilayer Perceptron has odd h hidden layers, 
+              where the first (h-1)/2 layers are reduced the size with the reduction rate r, and the last (h-1)/2 layers will be expanded with the same rate r. </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper Section. -->
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title is-4">Feature Maps</h2>
+        </div>
+
+        <div class="columns is-centered">
+
+          <!--a -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(a)</h2>
+             
+              <img src="./static/images/Figure8-a.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ a -->
+    
+          <!-- b -->
+          <div class="column">
+            <h2 class="title is-5">(b)</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure8-b.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ b -->
+        </div>
+        <div class="columns is-centered">
+
+          <!-- c -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(c)</h2>
+             
+              <img src="./static/images/Figure8-c.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ c -->
+    
+          <!-- d -->
+          <div class="column">
+            <h2 class="title is-5">(d)</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure8-d.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ d -->
+        </div>
+        <p>
+          <b>Figure 8.</b> Examples by drawing feature maps using Grad-CAM [63]. 
+          By using the CORE-ReID framework, we consider both original image and its flipped image. 
+          (a), (b), (c), (d) illustrate the feature maps of those pairs on Market➝Duke, Duke➝Market, Market➝MSMT, Duke➝MSMT, respectively.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title is-4">Accuracy</h2>
+        </div>
+
+        <div class="columns is-centered">
+
+          <!--a -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(a)</h2>
+             
+              <img src="./static/images/Figure9-a.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ a -->
+    
+          <!-- b -->
+          <div class="column">
+            <h2 class="title is-5">(b)</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure9-b.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ b -->
+        </div>
+        <div class="columns is-centered">
+
+          <!-- c -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(c)</h2>
+             
+              <img src="./static/images/Figure9-c.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ c -->
+    
+          <!-- d -->
+          <div class="column">
+            <h2 class="title is-5">(d)</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure9-d.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ d -->
+        </div>
+        <p>
+          <b>Figure 9.</b> Impact of clustering parameter M_(T,j). Results on (a) Market → Duke, (b) Duke → Market, (c) Market → MSMT, and (d) Duke → MSMT.
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <h2 class="title is-4">Backbone Configurations</h2>
+        </div>
+
+        <div class="columns is-centered">
+
+          <!--a -->
+          <div class="column">
+            <div class="content">
+              <h2 class="title is-5">(a)</h2>
+             
+              <img src="./static/images/Figure10-a.png"
+                class="interpolation-image"
+                alt="Interpolate start reference image."/>
+
+            </div>
+          </div>
+          <!--/ a -->
+    
+          <!-- b -->
+          <div class="column">
+            <h2 class="title is-5">(b)</h2>
+            <div class="columns is-centered">
+              <div class="column content">
+                <img src="./static/images/Figure10-b.png"
+                  class="interpolation-image"
+                  alt="Interpolate start reference image."/>
+        
+              </div>
+            </div>
+          </div>
+          <!--/ b -->
+          </div>
+        </div>
+        <p>
+          <b>Figure 10.</b> Impact of the backbone configurations. 
+          Results on (a) Market → Duke, (b) Duke → Market show that Resnet101 backbone gives the best overall results.
+        </p>
+      </div>
+    </section>
+
   </div>
 </section>
 
@@ -280,154 +613,35 @@
     <!-- Abstract. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            This study introduces a novel framework, <b>"Comprehensive Optimization and Refinement through 
-            Ensemble Fusion in Domain Adaptation for Person Re-identification (CORE-ReID)"</b>,
-             to address Unsupervised Domain Adaptation (UDA) for person Re-identification (ReID).
-          </p>
-          <p>
-            The framework utilizes CycleGAN to generate diverse data that harmonizes differences 
-            in im-age characteristics from different camera sources.
-             Based on a pair of teacher-student networks, the framework integrates multi-view features for
-              multi-level clustering to derive diverse pseu-do-labels. 
-              A learnable Ensemble Fusion (EF) that focuses on fine-grained local information within global features 
-              is introduced to enhance learning comprehensiveness and avoid ambiguity asso-ciated with multiple pseudo-labels.
-               Experimental results on two common UDA in person ReID demonstrate significant performance gains over state-of-the-art approaches. Additional en-hancements, such as Random Color Dropout to mitigate deviation effects and adaptive fusion of global and local features using the Resnet101 model, 
-            further contribute to the robustness of the framework. 
-          </p>
-          <p>
-            The proposed framework ensures clarity in fusion features, avoids ambiguity,
-             and achieves high accuracy in terms of Mean Average Precision, Top-1, Top-5, and Top-10, 
-             positioning it as an ad-vanced and effective solution for UDA in person ReID.
-             Our codes and models are available at <a>https://github.com/TrinhQuocNguyen/CORE-ReID</a>.
-          </p>
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-2">Results</h2>
+              <div class="content has-text-justified">
+              <img src="./static/images/Table1.png"
+                    class="interpolation-image"
+                    alt="Interpolate start reference image."/>
+              <p><b>Table 1.</b> Experimental results of the proposed CORE-ReID framework and state-of-the-art
+                 algorithms (Acc %) on Market-1501 and DukeMTMC-ReID datasets. 
+                <b>Bold</b> denotes the best while <u>Underline</u> indicates the second-best results.</p>
+            </div>
+            <div class="content has-text-justified">
+              <img src="./static/images/Table2.png"
+                    class="interpolation-image"
+                    alt="Interpolate start reference image."/>
+              <p><b>Table 2.</b> Experimental results of the proposed CORE-ReID framework and state-of-the-art algorithms 
+                (Acc %) from Market-1501 and DukeMTMC-ReID source datasets to target domain MSMT17 dataset. 
+                <b>Bold</b> denotes the best while <u>Underline</u> indicates the second-best results.</p>
+            </div>
+          </div>
         </div>
-      </div>
     </div>
     <!--/ Abstract. -->
-
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <!-- <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div> -->
-      </div>
-    </div>
-    <!--/ Paper video. -->
   </div>
 </section>
 
 
 <section class="section">
   <div class="container is-max-desktop">
-
-    <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <!-- <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video> -->
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <!-- <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div> -->
-        <!-- </div> -->
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
-        <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <!-- <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
-            </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
-          </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
-        </div> -->
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <!-- <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div> -->
-        <!--/ Re-rendering. -->
-
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-
     <!-- Concurrent Work. -->
     <div class="columns is-centered">
       <div class="column is-full-width">
@@ -487,16 +701,12 @@
       <div class="column is-8">
         <div class="content">
           <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
+            This project is intended solely for academic research and effect demonstration.
           </p>
           <p>
-            This means you are free to borrow the <a
-              href="#">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+            This page was built using the Template which was adopted from the <a
+            href="https://nerfies.github.io/">Nerfies</a> project page.
+
           </p>
         </div>
       </div>
