@@ -91,18 +91,20 @@
           <h1 class="title is-1 publication-title">CORE-ReID: <u>C</u>omprehensive <u>O</u>ptimization and <u>R</u>efinement through <u>E</u>nsemble fusion in Domain Adaptation for person re-identification</h1>
           <div class="is-size-4 publication-authors">
             <span class="author-block">
-              <a href="">Trinh Quoc Nguyen</a><sup>1</sup>,</span>
+              <a href="">Trinh Quoc Nguyen</a><sup>1, 2, *</sup>,</span>
             <span class="author-block">
-              <a href="">Oky Dicky Ardiansyah Prima </a><sup>1</sup>,</span>
+              <a href="">Oky Dicky Ardiansyah Prima </a><sup>1, *</sup>,</span>
             <span class="author-block">
               <a href="">Katsuyoshi Hotta</a><sup>2</sup>.
           </div>
           <br>
           <div class="is-size-5 publication-authors">
             <span class="author-block"><sup>1</sup><a href="https://www.iwate-pu.ac.jp/en/">Iwate Prefectural University</a>,</span>
-            <span class="author-block"><sup>2</sup><a href="https://cybercore.co.jp/">Cybercore AI</a>.</span>
+            <span class="author-block"><sup>2</sup><a href="https://cybercore.co.jp/">CyberCore Co., Ltd</a>.</span>
           </div>
-
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>*</sup> Correspondence: <a href="">g236v201@s.iwate-pu.ac.jp (T.Q.N.)</a>; <a href="">prima@iwate-pu.ac.jp (O.D.A.P.)</a>.</span>
+          </div>
           <div class="column has-text-centered">
             <div class="publication-links">
               <!-- PDF Link. -->
@@ -136,7 +138,7 @@
               </span>
               <!-- Code Link. -->
               <span class="link-block">
-                <a href=""
+                <a href="https://github.com/TrinhQuocNguyen/CORE-ReID"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="fab fa-github"></i>
@@ -190,14 +192,17 @@
              to address Unsupervised Domain Adaptation (UDA) for person Re-identification (ReID).
           </p>
           <p>
-            The framework utilizes CycleGAN to generate diverse data that harmonizes differences 
-            in image characteristics from different camera sources.
-             Based on a pair of teacher-student networks, the framework integrates multi-view features for
-              multi-level clustering to derive diverse pseu-do-labels. 
-              A learnable Ensemble Fusion (EF) that focuses on fine-grained local information within global features 
-              is introduced to enhance learning comprehensiveness and avoid ambiguity asso-ciated with multiple pseudo-labels.
-               Experimental results on two common UDA in person ReID demonstrate significant performance gains over state-of-the-art approaches. Additional enhancements, such as Random Color Dropout to mitigate deviation effects and adaptive fusion of global and local features using the Resnet101 model, 
-            further contribute to the robustness of the framework. 
+            The framework utilizes CycleGAN to generate diverse data that harmonizes differences in image characteristics 
+            from different camera sources in the pre-training stage. 
+            In the fine-tuning stage, based on a pair of teacher-student networks, 
+            the framework integrates multi-view features for multi-level clustering to derive diverse pseudo labels. 
+            A learnable Ensemble Fusion component that focuses on fine-grained local information within global features 
+            is introduced to enhance learning comprehensiveness and avoid ambiguity associated with multiple pseudo labels. 
+            Experimental results on three common UDA in person ReID demonstrate significant performance gains 
+            over state-of-the-art approaches. Additional enhancements, 
+            such as Efficient Channel Attention Block and Bi-directional Mean Feature Normalization 
+            mitigate deviation effects and adaptive fusion of global and local features using the Resnet-based model, 
+            further contribute to the robustness of the framework.  
           </p>
           <p>
             The proposed framework ensures clarity in fusion features, avoids ambiguity,
@@ -242,12 +247,14 @@
                 class="interpolation-image"
                 alt="Interpolate start reference image."/>
           <p><b>Figure 2.</b> Our method follows a specific pipeline to create the comprehensive training set for the source domain. 
-            Initially, we combine both the training set (depicted in green boxes) and the test set (represented by dark green boxes)
+            Initially, we combine both the training set (depicted in <b style="color:green;">green</b> boxes) and 
+            the test set (represented by <b style="color:#006600;">dark green</b> boxes)
              within the source dataset, forming the total training set con-sisting of real images. 
              This combined set is then employed to train the camera-aware style trans-fer model. 
-             For each real image, the trained transfer model is applied to generate images (indicated by blue boxes 
-             for the training set and dark blue boxes for the test set) that align with the stylistic characteristics of the target cameras. 
-             Subsequently, the real images (green and dark green boxes) and the style-transferred images (blue and dark blue boxes) 
+             For each real image, the trained transfer model is applied to generate images (indicated by <b style="color:#0099ff;">blue</b> boxes 
+             for the training set and <b style="color:#004d99;">dark blue</b> boxes for the test set) that align with the stylistic characteristics of the target cameras. 
+             Subsequently, the real images (<b style="color:green;">green</b> and <b style="color:#006600;">dark green</b> boxes) and the style-transferred images 
+             (<b style="color:#0099ff;">blue</b> and <b style="color:#004d99;">dark blue</b> boxes) 
              are amalgamated to produce the final training set within the source domain.</p>
         </div>
       </div>
@@ -321,9 +328,9 @@
           <img src="./static/images/Figure5.png"
                 class="interpolation-image"
                 alt="Interpolate start reference image."/>
-            <p><b>Figure 5.</b> Overview of our CORE-ReID framework. BMFN denotes Bi-directional mean feature Normalization. 
+            <p><b>Figure 5.</b> Overview of our <b>CORE-ReID</b> framework. <b>BMFN</b> denotes Bi-directional mean feature Normalization. 
               We combined local features and global features using Ensemble Fusion.
-                The ECAB in Ensemble Fusion promotes to enhance the features.
+                The <b>ECAB</b> in Ensemble Fusion promotes to enhance the features.
                 By using BMFN, the framework can merge the feature from original image x_(T,i) and its paired flipped image x_(T,i)^', 
                 then produce fusion feature  φ_l,l∈{top,bot}. The student network is optimized using pseudo labels in a supervised manner, 
               while the teacher network is updated by computing the temporal average of the student networks via the update momentum.</p>
@@ -340,7 +347,7 @@
           <img src="./static/images/Figure6.png"
                 class="interpolation-image"
                 alt="Interpolate start reference image."/>
-            <p><b>Figure 6.</b> The Ensemble Fusion component. ς_top  and ς_bot   features are passed through a component namely Enhanced Channel Attention Block (ECAB)
+            <p><b>Figure 6.</b> The Ensemble Fusion component. ς_top  and ς_bot   features are passed through a component namely Efficient Channel Attention Block (ECAB)
                to produce the channel attention maps by exploiting the inter-channel relationship of features which helps to enhance the features. </p>
         </div>
       </div>
@@ -350,12 +357,12 @@
     <!-- Paper Section -->
     <div class="columns is-centered has-text-centered">
       <div class="column">
-        <h2 class="title is-4">Enhanced Channel Attention Block</h2>
+        <h2 class="title is-4">Efficient Channel Attention Block</h2>
         <div class="content has-text-justified">
           <img src="./static/images/Figure7.png"
                 class="interpolation-image"
                 alt="Interpolate start reference image."/>
-            <p><b>Figure 7.</b> The structure of Enhance Channel Attention Block. The Shared Multilayer Perceptron has odd h hidden layers, 
+            <p><b>Figure 7.</b> The structure of Efficient Channel Attention Block. The Shared Multilayer Perceptron has odd h hidden layers, 
               where the first (h-1)/2 layers are reduced the size with the reduction rate r, and the last (h-1)/2 layers will be expanded with the same rate r. </p>
         </div>
       </div>
@@ -693,7 +700,7 @@
          href="#">
         <i class="fas fa-file-pdf"></i>
       </a>
-      <a class="icon-link" href="#" class="external-link" disabled>
+      <a class="icon-link" href="https://github.com/TrinhQuocNguyen/CORE-ReID" class="external-link" disabled>
         <i class="fab fa-github"></i>
       </a>
     </div>
